@@ -18,8 +18,8 @@ int main(int argc, char const *argv[]) {
   }
 
   for (size_t i = 1; i < N; i++) {
-    if (AB[0][1]>=AB[i][0]) {
-      /* code */
+    if (AB[0][1]==AB[i][0]) {
+
     }
   }
 
