@@ -13,11 +13,12 @@ int main(int argc, char const *argv[]) {
 
   for (int i = 0; i < N; i++) { //leser inn personer
     std::cin >> A >> B;
+
     AB[i][0] = A;
     AB[i][1] = B;
   }
 
-  for (size_t i = 1; i < N; i++) {
+  for (size_t i = 1; i < N; i++) { //leser inn reisestrekninger
     if (AB[0][1]==AB[i][0]) {
 
     }
