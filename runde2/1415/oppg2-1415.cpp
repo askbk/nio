@@ -37,6 +37,25 @@ int main(int argc, char const *argv[]) {
     std::cout << start[i] << ' ' << stop[i] << std::endl;
   }
 
+  for (size_t i = 0; i < N; i++) {
+    for (size_t j = 0; j < N; j++) {
+      if (start[i]>stop[j]) {
+        bill++;
+      } else {
+        break;
+      }
+    }
+    if (start[i]!=start[N]) {
+      if (start[i]==stop[i+1]) {
+        bill--;
+      }
+    }
+    if (stop[i]<start[i+1]) {
+      bill++;
+    }
+  }
+  std::cout << bill << std::endl;
+
   /*std::sort(AB[0], AB[0] + N);
   std::sort(AB[][])
 
