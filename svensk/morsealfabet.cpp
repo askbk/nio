@@ -9,6 +9,7 @@ int main() {
   std::string alf[26];    //alfabetet
   std::string signs[26];  //morsetegn
   std::string trans[26];
+  int alfLength[26];
   //std::map<std::string, int> legend;
 
   std::string S1;
@@ -36,6 +37,7 @@ int main() {
   const std::string signSpace(T, '0');
   const std::string letterSpace(B, '0');
 
+  //oversetting virker
   for (size_t i = 0; i < 26; ++i) {
     int signLength = signs[i].size();         //antall tegn i bokstaven
     for (size_t j = 0; j < signLength; ++j) { //legger til riktig antall 1-tall i oversettelsen + pause dersom det ikke er siste tegn i bokstaven
@@ -49,6 +51,30 @@ int main() {
         trans[i].append(signSpace);
       }
     }
+    alfLength[i]=trans[i].size();
   }
+
+  //dekoding virker ikke
+  while (morse.size() != 0) {
+    if (morse.front() == '1') {
+      for (size_t i = 0; i < 26; i++) {
+        if (morse.substr(0, alfLength[i]) == trans[i]) {
+          out.append(alf[i]);
+          morse.erase(0, alfLength[i]);
+        }
+      }
+    } else {
+      if (morse.substr(0, M)==spaces) {
+        out.append(" ");
+        morse.erase(0, M);
+      } else if (morse.substr(0, signSpace.size())==signSpace) {
+        out.append(" ");
+        morse.erase(0, T);
+      } else if (morse.substr(0, letterSpace.size())==letterSpace) {
+        morse.erase(0, B);
+      }
+    }
+  }
+
   return 0;
 }
