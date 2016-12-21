@@ -8,15 +8,13 @@ int main() {
   std::string inp;
   std::string out;
   std::cin >> N >> inp;
-  const int msgSize = inp.size() - 1;
+  const int msgSize = inp.length();
 
-  for (int i = 0; i <= msgSize; ++i) {
+  for (int i = 0; i < msgSize; ++i) {
     char A; //midlertidig variabel for input-bokstaven
     A = inp.at(i);
-    int index = A - 64; //bokstavens posisjon i alfabetet
-    index += N; //forskyvning
-    int indexX = index % modN; //
-    out.push_back(alfabet.at(indexX - 1));
+    int index = (A + N - 65) % modN; //bokstavens posisjon i alfabetet
+    out.push_back(alfabet.at(index));
   }
   std::cout << out << std::endl;
   return 0;
