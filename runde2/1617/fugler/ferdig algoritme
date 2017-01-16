@@ -1,0 +1,14 @@
+tall M=K for å holde styr på hvor mange ganger igjen man må multiplisere matrisene
+I er identitetsmatrisen
+mens M ikke er null
+	A = P hvor P er sannsynlighetsmatrisen
+	finner nærmeste eksponent av 2 under M, n.
+	dersom M>1
+		gjenta log2(n) ganger
+			multipliser A med seg selv
+
+	I = AxI	multipliserer A og I for å finne det midlertidig ferdige produktet
+	Dersom M==1
+		M=0
+	ellers
+		M = M - n
