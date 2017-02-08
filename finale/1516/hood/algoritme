@@ -1,0 +1,16 @@
+topp og bunn begynner på de to midterste elementene
+	dersom summen er lik P
+		ferdig
+
+	dersom summen er mindre enn P
+		dersom topp ikke er på siste element
+			flytt topp til høyre
+		ellers
+			dersom bunn ikke er på første element
+				flytt bunn til venstre
+		
+	dersom summen er større enn P
+		dersom bunn ikke er på første element
+			flytt topp og bunn til venstre
+		ellers
+			flytt topp til venstre
