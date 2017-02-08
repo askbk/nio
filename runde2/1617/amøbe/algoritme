@@ -1,0 +1,9 @@
+K sukker, T timer
+array A[T], hvert element er antall amøber etter T+1 timer
+
+sjekk om det er nok sukker til alle
+dersom nok sukker, forsøk å legge til én i siste element
+	dersom A[i]%2==1
+		A[i]++, man trenger ikke legge til foreldrenoder
+	ellers
+		dersom A[i-1]%2==
