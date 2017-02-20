@@ -1,58 +1,33 @@
 #include <iostream>
-#include <algorithm>
-#include <vector>
+#include <queue>
 
-bool wayToSort(int i, int j) { return i > j; }
+using namespace std;
 
-int main() {
-  int N;
+int main(int argc, char const *argv[]) {
+  priority_queue<long long> ressurser;
+  long long inp;
+  long long ress[3];
   long long hus = 0;
-  long long tem;
-  long long arr[3];
-  long long sum;
-  std::cin >> N;
-  std::vector<long long> ressurser;
+  int N;
 
-  for (size_t i = 0; i < N; ++i) {
-      std::cin >> tem;
-      ressurser.push_back(tem);
+  cin >> N;
+  for (size_t i = 0; i < N; i++) {
+    cin >> inp;
+    ressurser.push(inp);
   }
-
-  std::sort(ressurser.begin(), ressurser.end(), wayToSort);
 
   while (ressurser.size() > 2) {
-
-
-    for (size_t i = 0; i < 3; ++i) {
-      arr[i]=ressurser[i];
-    }
-
-    std::sort(std::begin(arr), std::end(arr));
-
-
     for (size_t i = 0; i < 3; i++) {
-      ressurser[i]=ressurser[i] - arr[0];
+      ress[i] = ressurser.top();
+      ressurser.pop();
     }
-
-    hus += arr[0];
-
-    if (ressurser[0]==0) {
-      ressurser.erase(ressurser.begin());
-      if (ressurser[0]==0) {
-        ressurser.erase(ressurser.begin());
-        if (ressurser[0]==0) {
-          ressurser.erase(ressurser.begin());
-        }
-      }
-    } else if (ressurser[1]==0) {
-      ressurser.erase(ressurser.begin() + 1);
-      if (ressurser[1]==0) {
-        ressurser.erase(ressurser.begin() + 1);
-      }
-    } else if (ressurser[2]==0) {
-      ressurser.erase(ressurser.begin() + 2);
+    hus += ress[2];
+    for (size_t i = 0; i < 2; i++) {
+      ress[i] -= ress[2];
+      ressurser.push(ress[i]);
     }
   }
-  std::cout << hus << std::endl;
+
+  cout << hus;
   return 0;
 }

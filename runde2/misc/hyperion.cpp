@@ -1,69 +1,53 @@
 #include <iostream>
-#include <tuple>
+#include <vector>
+#include <queue>
+#include <cstring>
 
-int clear(int pos_x, int pos_y, int poso, char kart) {
-  switch (poso) {
-    case 0:
-      if (kart[pos_x][pos_y-1]=='.' || kart[pos_x][pos_y+1]=='M') {
-        return 1;
-      } else {
-        return 0;
-      }
-    break;
-    case 1:
-    if (kart[pos_x+1][pos_y]=='.' || kart[pos_x+1][pos_y]=='M') {
-      return 1;
-    } else {
-      return 0;
-    }
-    break;
-    case 2:
-    if (kart[pos_x][pos_y+1]=='.' || kart[pos_x][pos_y+1]=='M') {
-      return 1;
-    } else {
-      return 0;
-    }
-    break;
-    case 3:
-    if (kart[pos_x-1][pos_y]=='.' || kart[pos_x-1][pos_y]=='M') {
-      return 1;
-    } else {
-      return 0;
-    }
-    break;
+using namespace std;
+
+struct nodeList{
+  int y, x, distance;
+  nodeList(_y, _x, _distance){
+    y = _y;
+    x = _x;
+    distance = _distance;
+  }
+  bool operator< {
+    return
   }
 }
 
 int main() {
-  int X, Y; //størrelse på kart
-  char IN;  //inputvariabel
-  std::cin >> X >> Y;
-  char kart[X][Y];    //array for kart
-  int pos_x, pos_y; //x- og y-posisjoner
-  int poso = 0; //orientering. 0 - opp, 1 - høyre, 2 - ned, 3 - venstre
-  int M_x, M_y; //kordinater til målet
-  int commands = 0; //antall kommandoer
+  int X, Y;
+  cin >> X >> Y;
+  char map_array[Y][X];
+  bool visited[Y][X];
+  memset(visited, 0, sizeof visited);
 
-  for (size_t i = 0; i < Y; ++i) {    //input for objekter på kartet
-    for (size_t j = 0; j < X; ++j) {
-      std::cin >> IN;
-      kart[j][i] = IN;
-      if (IN == 'S') {  //startposisjonen lagres i posisjonsvariabelen
-        pos_x = j;
-        pos_y = i;
-      } else if (IN == 'M') { //målet lagres
-        M_x = j;
-        M_y = i;
+  for (size_t i = 0; i < Y; i++;) {
+    for (size_t j = 0; j < X; j++) {
+      char inp;
+      cin >> inp;
+      map_array[i][j] = inp;
+      if(inp=='#'){
+        visited[i][j] = true;
+      } else if(inp=='S'){
+        pair<int, int> start = make_pair(i, j);
+        visited[i][j] = true;
+      } else if(inp =='M'){
+        pair <int, int> slutt = make_pair(i, j);
       }
     }
   }
 
-  while (pos_y != M_y && pos_x != M_x) {
-    for (size_t i = 0; i < 4; i++) {
-      if (clear(pos_x, pos_y, poso, kart)) {
-        /* code */
-      }
-    }
+  priority_queue<int> priqu;
+
+  vector< vector<int> > distance;
+
+  distance[].
+
+  while (!priqu.empty()) {
+    /* code */
   }
 
   return 0;
