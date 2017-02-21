@@ -1,0 +1,27 @@
+1. Lese gjennom kompendium, hoppe over deler markert med *
+2. Lese gjennom kompendium igjen, gjøre tilhørende oppgaver.
+3. Finne relevante algoritmer/datastrukturer i bok
+	- Kapittel 1: Mathematical foundations
+		- 5: Sets, Etc.
+		- 6: Counting and probability
+	- Kapittel 2: Sorting?
+		- 7,8,9: Sortering?
+	- Kapittel 3: Data structures
+		- 11: Elementary datastructures
+		- 13: BST
+	- Kapittel 4: Advanced design and analysis techniques
+		- 16: Dynamic programming
+		- 17: Greedy algorithms
+	- Kapittel 5: Advanced data structures
+		- 22: Data structures for  disjoint sets
+	- Kapittel 6: Graph algorithms
+		- 23: Elementary graph algorithms
+		- 24: Minimums spanning trees
+		- 25: Single source shortest path
+		- 26: All-pairs shortest paths
+	- Kapittel 7: Selected topics
+		- 32: Matrix operations
+		- 33: Number-theoretic algorithms
+		- 34: String matching
+		- 37: Approximation algorithms
+4. Gjøre flere oppgaver

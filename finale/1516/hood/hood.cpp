@@ -27,6 +27,8 @@ int main() {
     if (sum<P) {  //for lite
       if (topp!=(N-1)) {  //topp er ikke på siste element
         ++topp; //flytt topp til høyre
+        sum -= person[bunn];
+        ++bunn;
         sum += person[topp];
       } else {
         if (bunn!=0) {  //bunn er ikke på første element
