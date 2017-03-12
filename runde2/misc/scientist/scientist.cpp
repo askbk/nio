@@ -24,7 +24,9 @@ int main(int argc, char const *argv[]) {
     hus += ress[2];
     for (size_t i = 0; i < 2; i++) {
       ress[i] -= ress[2];
-      ressurser.push(ress[i]);
+      if (ress[i]!=0) {
+        ressurser.push(ress[i]);
+      }
     }
   }
 
