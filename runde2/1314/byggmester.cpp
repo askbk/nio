@@ -1,37 +1,33 @@
-#include <algorithm>
 #include <iostream>
-#include <vector>
-#include <cmath>
+#include <algorithm>
 
 using namespace std;
 
 int main(){
-    int N, T, p, a;
-    vector<int> hus;
-    
-    cin >> N >> T;
-    
-    for(int i = 0; i<N; ++i){
-        cin >> p;
-        hus.push_back(p);
+  int N, T;
+  cin >> N >> T;
+  int posisjon[N];
+  int aktuelt;
+
+  for (size_t i = 0; i < N; i++) {
+    cin >> posisjon[i];
+  }
+
+  sort(posisjon, posisjon + N);
+
+  for (size_t i = 0; i < T; i++) {
+    cin >> aktuelt;
+    int *lower = lower_bound(posisjon, posisjon + N, aktuelt); // huset etter aktuelt hus
+    int Idx = lower - posisjon;
+    int avstand = 0;
+
+    if (Idx == 0) {
+      avstand = abs(posisjon[Idx]-aktuelt);
+    } else if (Idx == N) {
+      avstand = abs(posisjon[Idx - 1]-aktuelt);
+    } else {
+      avstand = min(abs(posisjon[Idx]-aktuelt), abs(posisjon[Idx - 1]-aktuelt));
     }
-    
-    sort(hus.begin(), hus.end());
-    
-    for(int i = 0; i<T; ++i){
-        cin >> a;
-        vector<int>::iterator it = lower_bound(hus.begin(), hus.end(), a);
-        int index = it - hus.begin();
-        
-        if(it == hus.end()){   //dersom det ikke finnes hus til høyre
-            cout << abs(a-hus[index-1]) << '\n';
-        }else{
-            if(it == hus.begin()){ //dersom det ikke finnes hus til venstre
-                cout << hus[index] << '\n';
-            }else{
-                cout << min(abs(a-hus[index]), abs(a-hus[index-1]));
-            }
-        }
-    }
-    return 0;
+    cout << avstand << "\n";
+  }
 }
