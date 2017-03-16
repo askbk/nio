@@ -1,50 +1,42 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
-#include <map>
 
-int main() {
-  int P, N, F, bunn, topp;
-  int sum = 0;
-  std::vector<int> person;
+using namespace std;
 
-  std::cin >> P >> N;
-
-  bunn = (N / 2) - 1;
-  topp = bunn + 1;
+int main(){
+  int P, N;
+  cin >> P >> N;
+  int F[N];
+  int sum[N];
 
   for (size_t i = 0; i < N; i++) {
-    std::cin >> F;
-    person.push_back(F);
+    cin >> F[i];
   }
 
-  std::sort(person.begin(), person.end());
+  sort(F, F+N);
 
-  sum = person[bunn] + person[topp];
+  sum[0] = F[0];
 
-  while (sum!=P) {  //mens summen ikke er riktig
-    std::cout << sum << '\n';
-    if (sum<P) {  //for lite
-      if (topp!=(N-1)) {  //topp er ikke på siste element
-        ++topp; //flytt topp til høyre
-        sum -= person[bunn];
-        ++bunn;
-        sum += person[topp];
-      } else {
-        if (bunn!=0) {  //bunn er ikke på første element
-          --bunn; //flytt bunn til venstre
-          sum += person[bunn];
-        }
-      }
+  for (size_t i = 1; i < N; i++) {
+    sum[i] = sum[i-1] + F[i];
+  }
 
-    } else {  //for mye
-      sum -= person[topp];
-      --topp; //flytt topp til venstre
-      if (bunn!=0) {  //flytt til venstre dersom bunn ikke er første element
-        --bunn;
-        sum += person[bunn];
+  pair<int, int> match;
+  match.first = 0;
+  match.second = 2000000000;
+
+  for (size_t i = 0; i < N; i++) {
+    int *it = lower_bound(sum, sum+N, P+sum[i]);
+    int index = it - sum;
+    if (!(it == sum + N)) {
+      if (F[index] - F[i+1] < match.second - match.first) {
+        match.first = F[i+1];
+        match.second = F[index];
       }
     }
   }
+
+  cout << match.first << " " << match.second;
+  
   return 0;
 }
